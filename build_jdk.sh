@@ -9,11 +9,7 @@ if [[ "$TARGET_JDK" == "arm" ]]
 then
   export CFLAGS+=" -O3 -D__thumb__"
 else
-  if [[ "$TARGET_JDK" == "x86" ]]; then
-     export CFLAGS+=" -O3 -mstackrealign"
-  else
-     export CFLAGS+=" -O3"
-  fi
+  export CFLAGS+=" -O3"
 fi
 
 ln -s -f /usr/include/X11 $ANDROID_INCLUDE/
@@ -29,8 +25,8 @@ AUTOCONF_EXTRA_ARGS+="OBJCOPY=$OBJCOPY \
   STRIP=$STRIP \
   "
 
-export BOOT_JDK=$PWD/jdk-20
-export CFLAGS+=" -DANDROID"
+export BOOT_JDK=$PWD/jdk-24.0.2
+export CFLAGS+=" -DANDROID -D__ANDROID__=1 -Wno-int-conversion -Wno-error=implicit-function-declaration"
 export LDFLAGS+=" -L$PWD/dummy_libs" 
 
 # Create dummy libraries so we won't have to remove them in OpenJDK makefiles
@@ -46,7 +42,7 @@ cd openjdk
 
 # Apply patches
 git reset --hard
-git apply --reject --whitespace=fix ../patches/jdk21u_android.diff || echo "git apply failed (Android patch set)"
+git apply --reject --whitespace=fix ../patches/jdk25u_android.diff || echo "git apply failed (Android patch set)"
 
 bash ./configure \
     --with-boot-jdk=$BOOT_JDK \

@@ -22,7 +22,7 @@ mkdir -p "$out"
 makearch () {
   echo "Making $2...";
   cd "$work";
-  tar xf $(find "$in" -name jre21-$2-*release.tar.xz) > /dev/null 2>&1;
+  tar xf $(find "$in" -name jre25-$2-*release.tar.xz) > /dev/null 2>&1;
   mv bin "$work1"/;
   mkdir -p "$work1"/lib;
   
@@ -47,7 +47,7 @@ makearch () {
 makeuni () {
   echo "Making universal...";
   cd "$work";
-  tar xf $(find "$in" -name jre21-arm64-*release.tar.xz) > /dev/null 2>&1;
+  tar xf $(find "$in" -name jre25-arm64-*release.tar.xz) > /dev/null 2>&1;
   
   rm -rf bin;
   rm -rf lib/server;
@@ -64,7 +64,6 @@ makeuni () {
 makeuni
 makearch aarch32 arm
 makearch aarch64 arm64
-makearch i386 x86
 makearch amd64 x86_64
 
 # if running under GitHub Actions, write commit sha, else formatted system date

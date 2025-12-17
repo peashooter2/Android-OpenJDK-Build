@@ -1,4 +1,4 @@
-export NDK_VERSION=r21
+export NDK_VERSION=r28
 
 if [[ -z "$BUILD_FREETYPE_VERSION" ]]
 then
@@ -37,7 +37,7 @@ export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/linux-x86_64
 export ANDROID_INCLUDE=$TOOLCHAIN/sysroot/usr/include
 
 export CPPFLAGS="-I$ANDROID_INCLUDE -I$ANDROID_INCLUDE/$TARGET"
-export LDFLAGS="-L$NDK/platforms/android-$API/arch-$TARGET_SHORT/usr/lib"
+export LDFLAGS="-L$NDK/platforms/android-$API/arch-$TARGET_SHORT/usr/lib -lstdc++ -lc++abi"
 
 export thecc=$TOOLCHAIN/bin/${TARGET}${API}-clang
 export thecxx=$TOOLCHAIN/bin/${TARGET}${API}-clang++

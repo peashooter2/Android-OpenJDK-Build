@@ -2,13 +2,13 @@
  Build and packaging script for building OpenJDK, used for FoldCraftLauncher.
 
 ## Branch information
- This branch is used to compile JRE 21.
+ This branch is used to compile JRE 25.
 
 ## Setup and Build
  Use Android NDK to build.
 
 ### Setup
-- Download Android NDK r21.
+- Download Android NDK r28.
 - **Warning**: Do not attempt to build use newer or older NDK, it will lead to compilation errors.
 
 ### Build
@@ -21,7 +21,7 @@ export JVM_VARIANTS=[client/server] # default: server
 # Setup NDK, run once
 ./extract_ndk.sh
 
-# Get boot JDK, JDK 20 is needed when building JDK 21.
+# Get boot JDK, JDK 24 is needed when building JDK 25.
 ./get_boot_jdk.sh
 
 # Get CUPS, Freetype and build Freetype
