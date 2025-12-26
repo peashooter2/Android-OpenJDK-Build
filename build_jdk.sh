@@ -8,6 +8,7 @@ export CFLAGS+=" -DLE_STANDALONE"
 if [[ "$TARGET_JDK" == "arm" ]]
 then
   export CFLAGS+=" -O3 -D__thumb__"
+  export CFLAGS+=" -Dfseeko=fseek -Dftello=ftell"
 else
   export CFLAGS+=" -O3"
 fi
