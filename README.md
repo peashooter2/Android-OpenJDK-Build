@@ -56,7 +56,7 @@
             <th align="center">Build_JRE_25</th>
             <td align="center">√</td>
             <td align="center">√</td>
-            <td align="center">√</td>
+            <td align="center">×</td>
             <td align="center">√</td>
         </tr>
     </tbody>
